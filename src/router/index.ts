@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import Tabs from '../views/Tabs.vue'
+import { demos } from '@/config/DemoNames'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -17,7 +18,21 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'tab1',
-        component: () => import('@/views/Tab1.vue')
+        component: () => import('@/views/Tab1.vue'),
+        children: [
+          {
+            path: 'sample',
+            component: () => import('@/views/Sample.vue')
+          },
+          {
+            path: 'demo',
+            component: () => import('@/views/Demo.vue'),
+            children: demos.map((d: any) => ({ // FIXME: Replace any with type.
+              path: d.path,
+              component: () => import(`@/views/demos/${d.file}.vue`)
+            }))
+          }
+        ]
       },
       {
         path: 'tab2',

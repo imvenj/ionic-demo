@@ -1,16 +1,27 @@
 <template>
   <div id="container">
-    <strong>{{ name }}</strong>
+    <strong>{{ name }} - <a @click="showSample">Show Sample</a></strong><br>
+    <strong><a @click="router.push('/tabs/tab1/demo')">Show Demo</a></strong>
     <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
 </template>
 
 <script lang="ts">
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'ExploreContainer',
   props: {
     name: String
+  },
+  setup() {
+    const router = useRouter();
+
+    function showSample() {
+      router.push('/tabs/tab1/sample');
+    }
+
+    return { router, showSample }
   }
 }
 </script>
