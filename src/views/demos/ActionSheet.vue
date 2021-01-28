@@ -10,7 +10,11 @@
     </ion-header>
 
     <ion-content>
-
+      <div class="ion-text-center ion-padding">
+        <ion-button @click="showActionSheet">
+          Show Action Sheet
+        </ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -24,8 +28,10 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  actionSheetController
 } from '@ionic/vue'
+import { shareOutline } from 'ionicons/icons'
 
 export default defineComponent({
   name: 'ActionSheet',
@@ -39,7 +45,43 @@ export default defineComponent({
     IonToolbar
   },
   setup() {
-    return {}
+    const showActionSheet = async () => {
+      const actionSheet = await actionSheetController.create({
+        header: 'Albumn',
+        buttons: [
+          {
+            text: 'Delete',
+            role: 'destructive',
+            handler: () => {
+              console.log('Delete handler')
+            }
+          },
+          {
+            text: 'Share',
+            icon: shareOutline,
+            handler: () => {
+              console.log('Share handler')
+            }
+          },
+          {
+            text: 'Favorite',
+            handler: () => {
+              console.log('Favorite handler')
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel handler')
+            }
+          }
+        ]
+      })
+
+      return actionSheet.present()
+    }
+    return { showActionSheet }
   }
 })
 </script>
