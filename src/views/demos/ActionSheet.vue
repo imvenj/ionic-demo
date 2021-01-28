@@ -11,16 +11,28 @@
 
     <ion-content>
       <div class="ion-text-center ion-padding">
-        <ion-button @click="showActionSheet">
-          Show Action Sheet
+        <ion-button expand="block" @click="showActionSheet">
+          Show Action Sheet (Code)
+        </ion-button>
+
+        <ion-button expand="block" @click="setOpen(true)">
+          Show Action Sheet (Component)
         </ion-button>
       </div>
+
+      <ion-action-sheet
+        :is-open="isOpenRef"
+        header="Albums"
+        :buttons="buttons"
+        @onDidDismiss="setOpen(false)"
+      >
+      </ion-action-sheet>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { ref, defineComponent } from 'vue'
 import {
   IonPage,
   IonHeader,
@@ -29,6 +41,8 @@ import {
   IonContent,
   IonTitle,
   IonToolbar,
+  IonActionSheet,
+  IonButton,
   actionSheetController
 } from '@ionic/vue'
 import { shareOutline } from 'ionicons/icons'
@@ -42,46 +56,54 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
+    IonActionSheet,
+    IonButton,
     IonToolbar
   },
   setup() {
+    const isOpenRef = ref(false)
+    const setOpen = (state: boolean) => {
+      isOpenRef.value = state
+    }
+    const buttons = [
+      {
+        text: 'Delete',
+        role: 'destructive',
+        handler: () => {
+          console.log('Delete handler')
+        }
+      },
+      {
+        text: 'Share',
+        icon: shareOutline,
+        handler: () => {
+          console.log('Share handler')
+        }
+      },
+      {
+        text: 'Favorite',
+        handler: () => {
+          console.log('Favorite handler')
+        }
+      },
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel handler')
+        }
+      }
+    ]
     const showActionSheet = async () => {
       const actionSheet = await actionSheetController.create({
         header: 'Albumn',
-        buttons: [
-          {
-            text: 'Delete',
-            role: 'destructive',
-            handler: () => {
-              console.log('Delete handler')
-            }
-          },
-          {
-            text: 'Share',
-            icon: shareOutline,
-            handler: () => {
-              console.log('Share handler')
-            }
-          },
-          {
-            text: 'Favorite',
-            handler: () => {
-              console.log('Favorite handler')
-            }
-          },
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel handler')
-            }
-          }
-        ]
+        cssClass: 'action-sheet-component',
+        buttons: buttons
       })
 
       return actionSheet.present()
     }
-    return { showActionSheet }
+    return { isOpenRef, setOpen, buttons, showActionSheet }
   }
 })
 </script>
