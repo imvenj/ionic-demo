@@ -77,6 +77,8 @@ import {
   IonCardHeader,
   IonLabel,
   IonIcon,
+  IonButton,
+  IonItem,
   IonToolbar
 } from '@ionic/vue'
 import { pin, walk, warning, wifi, wine } from 'ionicons/icons'
@@ -97,6 +99,8 @@ export default defineComponent({
     IonCardHeader,
     IonLabel,
     IonIcon,
+    IonButton,
+    IonItem,
     IonToolbar
   },
   setup() {
