@@ -11,7 +11,7 @@
 
     <ion-content>
       <ion-list>
-        <ion-item detail v-for="demo in demos" :key="demo.path">
+        <ion-item class="ion-activatable" detail v-for="demo in demos" :key="demo.path">
           <ion-icon :icon="bookmarkOutline" slot="start"></ion-icon>
           <ion-label @click="router.push(`/tabs/tab1/demo/${demo.path}`)">{{ demo.name }}</ion-label>
         </ion-item>

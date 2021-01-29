@@ -67,6 +67,13 @@
           Clear
         </ion-button>
       </section>
+      <section>
+        <header class="ion-text-uppercase">Ripple Effect</header>
+        <ion-button expand="full" class="ion-activatable ripple-parent">
+          Ripple Effect (Not show if disabled)
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-button>
+      </section>
     </ion-content>
   </ion-page>
 </template>
@@ -81,6 +88,7 @@ import {
   IonContent,
   IonTitle,
   IonButton,
+  IonRippleEffect,
   IonToolbar
 } from '@ionic/vue'
 
@@ -94,6 +102,7 @@ export default defineComponent({
     IonContent,
     IonTitle,
     IonButton,
+    IonRippleEffect,
     IonToolbar
   },
   setup() {
@@ -115,5 +124,9 @@ header {
   font-weight: 600;
   letter-spacing: 0.05em;
   margin-bottom: 1.25em;
+}
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
 }
 </style>
