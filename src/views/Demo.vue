@@ -9,7 +9,7 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content class="ion-padding">
+    <ion-content>
       <ion-list>
         <ion-item detail v-for="demo in demos" :key="demo.path">
           <ion-icon :icon="bookmarkOutline" slot="start"></ion-icon>
