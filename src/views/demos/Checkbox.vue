@@ -46,6 +46,13 @@
           <ion-label>Dark</ion-label>
           <ion-checkbox slot="end" checked color="dark"></ion-checkbox>
         </ion-item>
+        <ion-item>
+          <ion-label>Intermediate</ion-label>
+          <ion-checkbox slot="end" indeterminate></ion-checkbox>
+        </ion-item>
+        <ion-item-divider>
+          Form Demo
+        </ion-item-divider>
         <ion-item-group>
           <ion-item v-for="f in form" :key="f.val">
             <ion-label>{{ f.val }}</ion-label>
@@ -74,6 +81,7 @@ import {
   IonItem,
   IonLabel,
   IonCheckbox,
+  IonItemDivider,
   IonItemGroup,
   IonToolbar
 } from '@ionic/vue'
@@ -92,6 +100,7 @@ export default defineComponent({
     IonItem,
     IonLabel,
     IonCheckbox,
+    IonItemDivider,
     IonItemGroup,
     IonToolbar
   },
