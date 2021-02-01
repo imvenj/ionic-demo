@@ -30,6 +30,7 @@
           Scroll To Top
         </ion-button>
       </div>
+      <ion-button slot="fixed" class="fixed-button">Fixed</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -96,5 +97,8 @@ export default defineComponent({
 </script>
 
 <style>
-
+.fixed-button {
+  right: 10px;
+  bottom: 10px;
+}
 </style>
