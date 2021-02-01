@@ -16,7 +16,7 @@
       @ionScroll="logScrolling($event)"
       @ionScrollEnd="logScrollEnd">
       <div class="ion-padding">
-        <ion-button expand="block" outline @click="scrollToBottom">
+        <ion-button expand="block" fill="outline" @click="scrollToBottom">
           Scroll To Bottom
         </ion-button>
       </div>
@@ -26,7 +26,7 @@
         </ion-item>
       </ion-list>
       <div class="ion-padding">
-        <ion-button expand="block" outline @click="scrollToTop">
+        <ion-button expand="block" fill="outline" @click="scrollToTop">
           Scroll To Top
         </ion-button>
       </div>
