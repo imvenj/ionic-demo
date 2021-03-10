@@ -37,6 +37,8 @@
 </template>
 
 <script lang="ts">
+// TODO: Add IonSplitPane demo.
+
 import { defineComponent } from 'vue'
 import {
   IonPage,
