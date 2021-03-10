@@ -10,9 +10,11 @@
     </ion-header>
 
     <ion-content>
-      <ion-button @click="toggleInfiniteScroll" expand="block">
-        Toggle Infinite Scroll
-      </ion-button>
+      <div class="ion-padding">
+        <ion-button @click="toggleInfiniteScroll" expand="block">
+          Toggle Infinite Scroll
+        </ion-button>
+      </div>
 
       <ion-list>
         <ion-item v-for="item in items" :key="item">
