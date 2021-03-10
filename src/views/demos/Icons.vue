@@ -10,7 +10,8 @@
     </ion-header>
 
     <ion-content>
-
+      <ion-icon :icon="accessibilityOutline"></ion-icon>
+      <ion-icon :icon="heart"></ion-icon>
     </ion-content>
   </ion-page>
 </template>
@@ -24,8 +25,11 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonIcon
 } from '@ionic/vue'
+
+import { accessibilityOutline, heart } from 'ionicons/icons'
 
 export default defineComponent({
   name: ' Icons',
@@ -36,14 +40,17 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonIcon
   },
   setup() {
-    return {}
+    return { accessibilityOutline, heart }
   }
 })
 </script>
 
-<style>
-
+<style scoped>
+ion-icon {
+  font-size: 48px;
+}
 </style>
