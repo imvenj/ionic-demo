@@ -10,7 +10,42 @@
     </ion-header>
 
     <ion-content>
-
+      <ion-list>
+        <ion-list-header>Group with divider</ion-list-header>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>A</ion-label>
+          </ion-item-divider>
+          <ion-item>
+            <ion-label>Adam</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Alan</ion-label>
+          </ion-item>
+        </ion-item-group>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>B</ion-label>
+          </ion-item-divider>
+          <ion-item detail lines="full">
+            <ion-label>Ben</ion-label>
+          </ion-item>
+          <ion-item detail lines="none">
+            <ion-label>Bill</ion-label>
+          </ion-item>
+        </ion-item-group>
+        <ion-item-group>
+          <ion-item-divider color="primary">
+            <ion-label>C</ion-label>
+          </ion-item-divider>
+          <ion-item detail>
+            <ion-label>Cathy</ion-label>
+          </ion-item>
+          <ion-item detail>
+            <ion-label>Calvin</ion-label>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -24,7 +59,13 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonList,
+  IonItem,
+  IonListHeader,
+  IonLabel,
+  IonItemDivider,
+  IonItemGroup
 } from '@ionic/vue'
 
 export default defineComponent({
@@ -36,7 +77,13 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonList,
+    IonItem,
+    IonListHeader,
+    IonLabel,
+    IonItemDivider,
+    IonItemGroup
   },
   setup() {
     return {}

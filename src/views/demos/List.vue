@@ -10,7 +10,12 @@
     </ion-header>
 
     <ion-content>
-
+      <ion-list>
+        <ion-list-header>List Example</ion-list-header>
+        <ion-item v-for="i in 20" :key="i">
+          <ion-label>Item {{ i }}</ion-label>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
@@ -24,7 +29,11 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonListHeader
 } from '@ionic/vue'
 
 export default defineComponent({
@@ -36,7 +45,11 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonListHeader
   },
   setup() {
     return {}
