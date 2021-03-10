@@ -9,8 +9,9 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content>
-
+    <ion-content class="ion-padding">
+      <ion-button expand="block" @click="showLoading">Show Loading</ion-button>
+      <ion-button expand="block" @click="showLoadingWithOptions">Show Loading with Options</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -24,11 +25,19 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonButton,
+  loadingController
 } from '@ionic/vue'
 
 export default defineComponent({
-  name: ' Loading',
+  name: 'Loading',
+  props: {
+    timeout: {
+      type: Number,
+      default: 1000
+    }
+  },
   components: {
     IonPage,
     IonHeader,
@@ -36,10 +45,36 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonButton
   },
-  setup() {
-    return {}
+  setup(props) {
+    const showLoading = async () => {
+      const loading = await loadingController.create({
+        cssClass: 'my-custom-class',
+        message: 'Loading...',
+        duration: props.timeout
+      })
+      await loading.present()
+      setTimeout(() => {
+        loading.dismiss()
+      }, props.timeout)
+    }
+    const showLoadingWithOptions = async () => {
+      const loading = await loadingController.create({
+        spinner: null,
+        duration: props.timeout,
+        message: 'Click the backdrop to dismiss early...',
+        translucent: true,
+        cssClass: 'custom-class custom-loading',
+        backdropDismiss: true
+      })
+      await loading.present()
+      setTimeout(() => {
+        loading.dismiss()
+      }, props.timeout)
+    }
+    return { showLoading, showLoadingWithOptions }
   }
 })
 </script>
