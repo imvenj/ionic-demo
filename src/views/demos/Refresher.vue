@@ -10,13 +10,29 @@
     </ion-header>
 
     <ion-content>
-
+      <ion-refresher
+        slot="fixed"
+        @ionRefresh="doRefresh($event)"
+        pull-factor="0.5"
+        pull-min="100"
+        pull-max="200"
+      >
+        <ion-refresher-content
+          :pulling-icon="chevronDownCircleOutline"
+          pulling-text="Pull to refresh"
+          refreshing-spinner="circles"
+          refreshing-text="Refreshing..."
+        ></ion-refresher-content>
+      </ion-refresher>
+      <div class="ion-padding">
+        <h3>{{ contentRef }}</h3>
+      </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import {
   IonPage,
   IonHeader,
@@ -24,8 +40,11 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonRefresher,
+  IonRefresherContent
 } from '@ionic/vue'
+import { chevronDownCircleOutline } from 'ionicons/icons'
 
 export default defineComponent({
   name: ' Refresher',
@@ -36,10 +55,19 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonRefresher,
+    IonRefresherContent
   },
   setup() {
-    return {}
+    const contentRef = ref('Not refreshed')
+    const doRefresh = (event: CustomEvent) => {
+      setTimeout(() => {
+        (event.target as any).complete()
+        contentRef.value = `Refreshed at: ${new Date()}`
+      }, 2000)
+    }
+    return { doRefresh, contentRef, chevronDownCircleOutline }
   }
 })
 </script>
