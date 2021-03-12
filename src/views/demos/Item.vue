@@ -135,7 +135,9 @@ export default defineComponent({
     const slidingItem = ref(null)
     const favorite = () => {
       console.log('favorite: ');
-      // FIXME: Is this the correct way to close sliding items?
+      // This is the correct way to call method on component
+      // Reference: 
+      // https://ionicframework.com/docs/vue/troubleshooting#method-on-component-is-not-a-function
       (listItem.value as any).$el.closeSlidingItems()
     }
     const unread = () => {
