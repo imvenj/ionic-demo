@@ -170,7 +170,19 @@
         <ion-title>Dark Toolbar</ion-title>
       </ion-toolbar>
 
+      <ion-list>
+        <ion-item @click="router.push('/collapse')">
+          <ion-label>Show Collapsable Toolbar Title</ion-label>
+        </ion-item>
+      </ion-list>
+
     </ion-content>
+
+    <ion-footer>
+      <ion-toolbar>
+        <ion-title>Footer toolbar</ion-title>
+      </ion-toolbar>
+    </ion-footer>
   </ion-page>
 </template>
 
@@ -179,6 +191,7 @@ import { defineComponent } from 'vue'
 import {
   IonPage,
   IonHeader,
+  IonFooter,
   IonButtons,
   IonBackButton,
   IonContent,
@@ -189,8 +202,12 @@ import {
   IonSegment,
   IonSegmentButton,
   IonIcon,
-  IonMenuButton
+  IonMenuButton,
+  IonList,
+  IonItem,
+  IonLabel
 } from '@ionic/vue'
+import { useRouter } from 'vue-router'
 import { personCircle, search, star, create, helpCircle, ellipsisVertical, ellipsisHorizontal } from 'ionicons/icons'
 
 export default defineComponent({
@@ -198,6 +215,7 @@ export default defineComponent({
   components: {
     IonPage,
     IonHeader,
+    IonFooter,
     IonButtons,
     IonBackButton,
     IonContent,
@@ -208,7 +226,10 @@ export default defineComponent({
     IonSegment,
     IonSegmentButton,
     IonIcon,
-    IonMenuButton
+    IonMenuButton,
+    IonList,
+    IonItem,
+    IonLabel
   },
   setup() {
     const clickedSearch = () => {
@@ -217,7 +238,8 @@ export default defineComponent({
     const clickedStar = () => {
       console.log('star clicked')
     }
-    return { personCircle, search, star, create, helpCircle, clickedSearch, clickedStar, ellipsisVertical, ellipsisHorizontal }
+    const router = useRouter()
+    return { router, personCircle, search, star, create, helpCircle, clickedSearch, clickedStar, ellipsisVertical, ellipsisHorizontal }
   }
 })
 </script>
