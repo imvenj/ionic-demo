@@ -9,8 +9,8 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content>
-
+    <ion-content class="ion-padding">
+      <ion-button expand="block" @click="openModal">Show Nav</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -24,8 +24,11 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonButton,
+  modalController
 } from '@ionic/vue'
+import Nav from '@/views/demos/Nav.vue'
 
 export default defineComponent({
   name: ' Navigation',
@@ -36,10 +39,18 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonButton
   },
   setup() {
-    return {}
+    const openModal = async () => {
+      const modal = await modalController.create({
+        component: Nav
+      });
+
+      await modal.present();
+    }
+    return { openModal }
   }
 })
 </script>
