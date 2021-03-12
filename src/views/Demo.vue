@@ -2,9 +2,6 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-back-button default-href="/"></ion-back-button>
-        </ion-buttons>
         <ion-title>Ion Framework Demo</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -13,7 +10,7 @@
       <ion-list>
         <ion-item class="ion-activatable" detail v-for="demo in demos" :key="demo.path">
           <ion-icon :icon="bookmarkOutline" slot="start"></ion-icon>
-          <ion-label @click="router.push(`/tabs/tab1/demo/${demo.path}`)">{{ demo.name }}</ion-label>
+          <ion-label @click="router.push(`/${demo.path}`)">{{ demo.name }}</ion-label>
         </ion-item>
       </ion-list>
     </ion-content>
@@ -26,8 +23,6 @@ import {
   IonPage,
   IonHeader,
   IonToolbar,
-  IonButtons,
-  IonBackButton,
   IonContent,
   IonList,
   IonItem,
@@ -46,8 +41,6 @@ export default defineComponent({
     IonPage,
     IonHeader,
     IonToolbar,
-    IonButtons,
-    IonBackButton,
     IonContent,
     IonList,
     IonItem,
