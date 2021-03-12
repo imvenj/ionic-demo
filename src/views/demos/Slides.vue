@@ -10,7 +10,17 @@
     </ion-header>
 
     <ion-content>
-
+      <ion-slides pager="true" :options="options">
+        <ion-slide>
+          <h1>Slide 1</h1>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 2</h1>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 3</h1>
+        </ion-slide>
+      </ion-slides>
     </ion-content>
   </ion-page>
 </template>
@@ -24,7 +34,9 @@ import {
   IonBackButton,
   IonContent,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonSlides,
+  IonSlide
 } from '@ionic/vue'
 
 export default defineComponent({
@@ -36,14 +48,22 @@ export default defineComponent({
     IonBackButton,
     IonContent,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonSlides,
+    IonSlide
   },
   setup() {
-    return {}
+    const options = {
+      initialSlide: 1,
+      speed: 400
+    }
+    return { options }
   }
 })
 </script>
 
 <style>
-
+ion-slides {
+  height: 100%;
+}
 </style>
